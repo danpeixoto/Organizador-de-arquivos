@@ -87,10 +87,3 @@ async function organizeFolder(folderPath) {
 }
 
 organizeFolder(config.watchFolder);
-
-fs.watchFile(config.watchFolder, { interval: 3600 * 1000 }, (curr, prev) => {
-    if (curr.mtime !== prev.mtime) {
-        console.log('Folder has been modified, organizing files...');
-        organizeFolder(config.watchFolder);
-    }
-});
